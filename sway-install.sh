@@ -36,6 +36,6 @@ systemctl enable greetd.service
 
 # Remove the repo
 echo "Removing the EOS Community Sway repo..."
-rm -rf ../sway
+rm -rf ../eos-community-sway
 
 echo "Installation complete."
