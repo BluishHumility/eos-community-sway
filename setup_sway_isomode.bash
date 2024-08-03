@@ -7,18 +7,18 @@ git clone https://github.com/BluishHumility/eos-community-sway.git
 
 # Install the custom package list
 echo "Installing needed packages..."
-pacman -S --noconfirm --noprogressbar --needed --disable-download-timeout $(< ./sway/packages-repository.txt)
+pacman -S --noconfirm --noprogressbar --needed --disable-download-timeout $(< eos-community-sway/packages-repository.txt)
 
 # Deploy user configs
 echo "Deploying user configs..."
-rsync -a sway/.config "/home/${username}/"
-rsync -a sway/home_config/ "/home/${username}/"
+rsync -a eos-community-sway/.config "/home/${username}/"
+rsync -a eos-community-sway/home_config/ "/home/${username}/"
 # Restore user ownership
 chown -R "${username}:${username}" "/home/${username}"
 
 # Deploy system configs
 echo "Deploying system configs..."
-rsync -a --chown=root:root sway/etc/ /etc/
+rsync -a --chown=root:root eos-community-sway/etc/ /etc/
 
 # Check if the script is running in a virtual machine
 if systemd-detect-virt | grep -vq "none"; then
@@ -29,7 +29,7 @@ fi
 
 # Remove the repo
 echo "Removing the EOS Community Sway repo..."
-rm -rf sway
+rm -rf eos-community-sway
 
 # Enable the Greetd service
 echo "Enabling the Greetd service..."
